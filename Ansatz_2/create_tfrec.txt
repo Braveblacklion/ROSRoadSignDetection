@@ -1,0 +1,29 @@
+https://github.com/datitran/raccoon_dataset
+	-> xml_to_csv.py, generate_tfrecord.py (beide anzupassen an den Datensatz)
+
+https://github.com/tensorflow/models
+	-> models ordner
+
+1. immer auszuführen bei neu modell ordner oder shell:
+set PYTHONPATH=C:\**\models;C:\**\models\research;C:\**\models\research\slim
+
+# From models/research
+protoc object_detection/protos/*.proto --python_out=.
+
+2. erstelle nötige komponenten für training: 
+python xml_to_csv.py
+
+python generate_tfrecord.py --csv_input=data/train_labels.csv --output_path=data/train.record --image_dir=images/Priority_road/
+
+python generate_tfrecord.py --csv_input=data/test_labels.csv --output_path=data/test.record --image_dir=images/Priority_road/
+
+
+3. trainiere modell:
+python legacy/train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/ssd_mobilenet_v2_coco.config
+
+schau fortschritt --> tensorboard --logdir=training/
+		  --> 127.0.0.1:6006
+
+
+4. erstelle modell für durchführung:
+python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/ssd_mobilenet_v2_coco.config --trained_checkpoint_prefix training/model.ckpt-26714 --output_directory Traffic_Sign_Ki
