@@ -1,0 +1,20 @@
+
+windows: installiere microsoft c++ buildTools.
+
+##new env:
+conda create --name itprojekt python=3.6
+conda activate itprojekt
+conda install -c conda-forge tensorflow=1.14
+conda install -c conda-forge tensorflow-gpu=1.14
+conda install matplotlib lxml pandas cython pillow contextlib2 protobuf git
+
+Windows: pip install "git+https://github.com/philferriere/cocoapi.git#egg=pycocotools&subdirectory=PythonAPI"
+Linux: conda install -c conda-forge pycocotools
+
+Windows: set PYTHONPATH=C:\...\models;C:\...\models\research;C:\...\models\research\slim
+Linux: export PYTHONPATH=$PYTHONPATH:~/IT_Projekt/models:~/IT_Projekt/models/research:~/IT_Projekt/models/research/slim
+
+##in model/research
+protoc object_detection/protos/*.proto --python_out=.
+python setup.py install
+--> installiert objekt detection
