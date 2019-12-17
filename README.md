@@ -7,6 +7,8 @@ In Ansatz_1 we tried an Approach with Keras which was trained with the GTRSB Dat
 
 In Ansatz_2 we used transfer learning from a pre-trained SSD MobileNet with a Dataset composed of Images from Google and images we made ourself.
 
+In the anaconda_dependencies.txt you can find the commands to install the needed dependencies.
+
 ## Final Result
 
 ![Preview](Final_Result.png)
