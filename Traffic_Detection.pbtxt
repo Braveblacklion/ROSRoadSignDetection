@@ -1,0 +1,24 @@
+item {
+  id: 1
+  name: 'priority_road' 
+}
+
+item {
+  id: 2
+  name: 'no_entry'
+}
+
+item {
+  id: 3
+  name: 'danger'
+}
+
+item {
+  id: 4
+  name: 'bend_left'
+}
+
+item {
+  id: 5
+  name: 'bend_right'
+}
